@@ -6,6 +6,14 @@ git branch -M master
 git push --set-upstream --force origin master    (same as: git push -uf origin master)
 ```
 
+## Change Global Settings
+```
+git config --list
+git config --global user.name "Sabrina Liu"
+git config --global user.email "abc@abc.com
+git config user.name
+```
+
 ## Commit Changes
 ```
 git add .
