@@ -27,3 +27,15 @@ def pretty_table(df: pd.DataFrame):
         table.add_row(df.iloc[i])
     return table
 ```
+
+## iPython Auto Reload
+```python
+from IPython import get_ipython
+
+ipy = get_ipython()
+if ipy.__class__.__name__ == 'TerminalInteractiveShell':
+    if 'autoreload' not in ipy.extension_manager.loaded:
+        ipy.magic("load_ext autoreload")
+        ipy.magic("autoreload 2")
+```
+
