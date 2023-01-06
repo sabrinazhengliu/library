@@ -24,7 +24,7 @@ git push origin master    (or simply: git push)
 
 ## Remove Staged File
 ```bash
-git add just_test
+git add path/to/file
 git status
 git diff --cached|--staged
 git reset HEAD -- path/to/file     # remove one file
