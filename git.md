@@ -12,6 +12,7 @@ git config --list
 git config --global user.name "Sabrina Liu"
 git config --global user.email "abc@abc.com
 git config user.name
+less ~/.gitconfig
 ```
 
 ## Commit Changes
