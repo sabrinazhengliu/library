@@ -22,6 +22,15 @@ git commit -m 'my changes'
 git push origin master    (or simply: git push)
 ```
 
+## Remove Staged File
+```bash
+git add just_test
+git status
+git diff --cached|--staged
+git reset HEAD -- path/to/file     # remove one file
+git reest HEAD --                  # remove all files
+```
+
 ## Create a Branch
 ```bash
 # check all branches
