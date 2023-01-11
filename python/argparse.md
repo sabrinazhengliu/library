@@ -8,6 +8,11 @@ parser.add_argument('-d', '--target_date', help='yyyy-mm-dd', default=date.today
 parser.add_argument('-p', '--prod', action='store_true')
 parser.add_argument('-v', '--verbose', action='store_true', default=True)
 args = parser.parse_args()
+
+
+target_date = args.target_date
+if args.verbose:
+    print('ok')
 ```
 
 
