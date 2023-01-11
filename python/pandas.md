@@ -4,6 +4,7 @@ import pandas as pd
 pd.options.mode.chained_assignment = None
 pd.set_option('display.width', 2000)
 pd.set_option('display.max_colwidth', 200)
+pd.set_option('display.float_format', lambda x: '%.4f' % x)
 ```
 
 ## Pandas to Excel
