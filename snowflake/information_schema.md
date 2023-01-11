@@ -33,7 +33,7 @@ select query_id
 , rows_produced
 , error_code
 , error_message
-from table (information_schema.query_history())
+from table(information_schema.query_history())
 where user_name = '<ROLE>'
 and schema_name = '<SCHEMA>'
 and query_tag = '<TAG>'
