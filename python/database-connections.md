@@ -1,16 +1,24 @@
 ## Connection through Credentials
 ```python
 import getpass
+import platform
 import configparser as cp
 
 def parse_server_config(profile):
-
     user = getpass.getuser()
-    config_file = ...    # .../con.ini
-    conf = cp.ConfigParser()
-    conf.read(config_file)
-    config_params = conf._sections[profile]
-
+    if platform.system() == 'Linux':
+        config_file = f'/home/{user}/.../con.ini'
+        conf = cp.ConfigParser()
+        conf.read(config_file)
+        config_params = conf._sections[profile]
+    elif platform.system() == 'Windows':
+        config_params = dict(
+            account=...,
+            user=uesr,
+            authenticator='externalbrowser',    # authenticate with OKTA
+            warehouse=...,
+            role=...,
+    )
     return config_params
 ```
 
