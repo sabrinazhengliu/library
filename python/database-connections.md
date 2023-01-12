@@ -36,9 +36,24 @@ def connect_to_snowflake(profile, database=None, schema=None):
 ```python
 import pyhs2 as hive
 
-def connect_to_hive(database=None, username=None, password=None, **kwargs)
+def connect_to_hive(database=None, username=None, password=None, **kwargs):
     params = parse_server_config(profile='hive')    # host, port, user, password, authMechanism='LDAP'
     params.update(database=database)
     connection = hive.connect(**params)
     return connection
 ```
+
+
+
+## SQL Server
+```python
+import pyodbc
+
+def connect_to_mssql(database, schema, **kwargs):
+    params = parse_server_config(profile='mssql')    # host, port, user, password, authMechanism='LDAP'
+    driver = ('/opt/microsoft/msodbcsql/lib64/libmsodbcsql-version#')
+    engine = f"driver={driver};server={host};port={port};database={database};uid={username};pwd={password}"
+    connection = pyodbc.connect(driver, **kwargs)
+    return connection
+```
+
