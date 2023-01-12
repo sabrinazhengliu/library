@@ -43,8 +43,6 @@ def set_http_proxy():
     return
 ```
 
-
-
 ## Snowflake
 ```python
 import warnings
@@ -60,6 +58,33 @@ def connect_to_snowflake(profile, database=None, schema=None):
     params.update(dict(database=database, schema=schema))
     connection = snowflake.connector.connect(**params)
     return connection
+
+def query_snowflake(sql_scripts, database, schema, results=True):
+    con = connect_to_snowflake(database=database, schema=schema)
+    try:
+        cur = con.cursor()
+        cur.execute(sql_scripts)
+        if results:
+            df_res = cur.fetch_pandas_all()
+            df_res.columns = [c.lower() for c in df_res.columns]
+            return df_res
+    except Exception as e:
+        print(sys.exc_info()[0])
+        print(sys.exc_info()[1])
+        print('-' * 50, '>' * 3, 'Query Failed!')
+    finally:
+        cur.close()
+        con.close()
+
+#TODO: return rowcount
+def execute_in_snowflake(sql_scripts, database, schema):
+    query_snowflake(
+        sql_scripts,
+        database=database,
+        schema=schema,
+        results=False
+    )
+    return
 ```
 
 
