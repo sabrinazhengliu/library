@@ -1,5 +1,8 @@
 ## Connection through Credentials
 ```python
+import getpass
+import configparser as cp
+
 def parse_server_config(profile):
 
     user = getpass.getuser()
@@ -13,12 +16,29 @@ def parse_server_config(profile):
 
 ## Snowflake
 ```python
-def connect_to_snowflake(profile, database=None, schema=None):
+import warnings
+warnings.filterwarnings("ignore", ".*supports_statement_chache*")
 
-    params = parse_server_config(profile)
+import snowflake.connector
+snowflake.connector.paramstyle = u'pyformat'
+from snowflake.sqlalchemy import URL
+from sqlalchemy import create engine
+
+def connect_to_snowflake(profile, database=None, schema=None):
+    params = parse_server_config(profile='snowflake')
     params.update(dict(database=database, schema=schema))
     connection = snowflake.connector.connect(**params)
-    
     return connection
 ```
 
+
+## Hive
+```python
+import pyhs2 as hive
+
+def connect_to_hive(database=None, username=None, password=None, **kwargs)
+    params = parse_server_config(profile='hive')    # host, port, user, password, authMechanism='LDAP'
+    params.update(database=database)
+    connection = hive.connect(**params)
+    return connection
+```
