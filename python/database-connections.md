@@ -14,13 +14,36 @@ def parse_server_config(profile):
     elif platform.system() == 'Windows':
         config_params = dict(
             account=...,
-            user=uesr,
+            user=user,
             authenticator='externalbrowser',    # authenticate with OKTA
             warehouse=...,
             role=...,
     )
     return config_params
 ```
+
+## Set HTTP Proxy
+```python
+import os
+
+def set_http_proxy():
+    """
+    alternatively, setup in bash shell
+    $ nano ~/.bashrc
+        export HTTP_PROXY='...'
+        export HTTPS_PROXY='...'
+    $ source ~/.bashrc
+    """
+    if ... in os.uname().nodename:      # depends on machine
+        proxy = '...'
+        if not os.environ.get('HTTP_PROXY'):
+            os.environ['HTTP_PROXY'] = proxy
+        if not os.environ.get('HTTPS_PROXY'):
+            os.environ['HTTPS_PROXY'] = proxy
+    return
+```
+
+
 
 ## Snowflake
 ```python
@@ -50,8 +73,6 @@ def connect_to_hive(database=None, username=None, password=None, **kwargs):
     connection = hive.connect(**params)
     return connection
 ```
-
-
 
 ## SQL Server
 ```python
