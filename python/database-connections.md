@@ -57,3 +57,13 @@ def connect_to_mssql(database, schema, **kwargs):
     return connection
 ```
 
+## MySQL
+```python
+import mysql.connector
+
+def connect_to_mysql(database):
+    params = parse_server_config(profile='mysql')    # host, user, password
+    params.update(database=database)
+    connection = mysql.connector.connect(**params)
+    return connection
+```
