@@ -1,3 +1,18 @@
+## .gitignore
+```
+*.csv
+*.dat
+*.xlsx
+*.pkl
+*.pyc
+*/archived/*
+*/mail/*
+*/prompt/*
+*/runtime/*
+*/visuals/*
+```
+
+
 ## New Repo
 ```
 git init
