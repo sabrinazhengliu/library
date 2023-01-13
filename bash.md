@@ -2,6 +2,9 @@
 ```bash
 nano ~/.bashrc
     alias ll='ls -l'
+    alias rm='rm -i'
+    alias mv='mv -i'
+    alias cp='cp -i'
 source ~/.bashrc
 ```
 
