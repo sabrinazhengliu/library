@@ -29,7 +29,7 @@ def _apply_bold_header(excel_writer, sheet_name):
     excel_writer.sheets[sheet_name].set_row(0, None, font_bold)
     return
 
-def _apply_conditional_format(excel_writer, cols: list):
+def _apply_conditional_format(excel_writer, sheet_name, cols: list):
     
     def _get_exel_cols():
         list1 = [x for x in string.ascii_uppercase]
