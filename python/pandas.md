@@ -41,9 +41,9 @@ def _apply_conditional_format(excel_writer, cols: list):
     cols = [_get_excel_cols()[c] for c in cols]    # to column names
     cols = [f'{c}1:{c}50000' for c in cols]        # to column range
 
-    red_fmt = {'bg_color': '#FFC7CE', 'font_color': '#9C0006'}
-    red_highlight = excel_writer.book.add_format(red_fmt)
-    red_formula = {'type': 'cell', 'criteria': '=', 'value': True, 'format': red_highlight}
+    red_col = {'bg_color': '#FFC7CE', 'font_color': '#9C0006'}
+    red_fmt = excel_writer.book.add_format(red_col)
+    red_formula = {'type': 'cell', 'criteria': '=', 'value': True, 'format': red_fmt}
     
     for col in cols:
         excel_writer.sheets[sheet_name].conditional_format(col, formula)
