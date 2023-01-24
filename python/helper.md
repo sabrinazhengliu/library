@@ -39,3 +39,36 @@ if ipy.__class__.__name__ == 'TerminalInteractiveShell':
         ipy.magic("autoreload 2")
 ```
 
+## Get Progress Report
+```python
+from datetime import datetime
+import time
+
+def get_progress_report(status, timestamp, **kwargs):
+
+    if status == 0:
+        line1 = "  Process started  "
+    elif status == 1:
+        line1 = "  Complete!  "
+    else:
+        raise ValueError("status must be integer 0 or 1!")
+
+    line2 = "  %s  " % datetime.strftime(timestamp, '%Y-%m-%d %H:%M:%S')
+    prompt = "\n{:*^80}\n{:*^80}".format(line1, line2)
+
+    for k, v in kwargs.items():
+        prompt += "\n{:*^80}".format(f"  {k}: {v}  ")
+    prompt += "\n"
+    print(prompt)
+    pass
+
+# usage
+start = time.perf_counter()
+get_progress_report(0, start, **kwargs)
+
+finish = time.perf_counter()
+seconds_used = (finish - start).seconds
+minutes_used = round(seconds_used / 60, 2)
+get_progress_report(1, finish, minutes_used=minutes_used)
+```
+
