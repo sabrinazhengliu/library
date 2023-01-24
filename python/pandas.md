@@ -57,7 +57,7 @@ def save_to_excel(df_in, excel_file, sheet_name, condition=True, save=False):
             df[col] = df[col].fillna("").astype(str)
 
     global excel_writer
-    if not 'excel_writer' in globals().keys():
+    if 'excel_writer' not in globals().keys():
         excel_writer = pd.ExcelWriter(
           excel_file, engine='xlsxwriter',datetime_format='yyyy-mm-dd'
         )
