@@ -82,7 +82,7 @@ def save_to_excel(df_in, excel_file, sheet_name, condition=True, save=False):
     _apply_font_size(excel_writer, sheet_name, dict_col_width)
     _apply_bold_header(excel_writer, sheet_name)
     if condition:
-        _apply_conditional_format(excel_writer, df.columns.tolist())
+        _apply_conditional_format(excel_writer, sheet_name, df.columns)
    
     print(f"Output saved to worksheet {sheet_name}")
     if save:
